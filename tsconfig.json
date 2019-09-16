@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "jsx": "react",
     "experimentalDecorators": true,
@@ -9,7 +10,15 @@
       "dom",
       "es2017"
     ],
-    "outDir": "./build"
+    "outDir": "./build",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true
   },
-  "exclude": ["build"]
+  "exclude": ["build"],
 }

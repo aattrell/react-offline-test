@@ -1,12 +1,21 @@
 {
   "private": true,
   "scripts": {
-    "test": "jest **/*.test.js*",
+    "fix": "prettier 'src/**/*.{js,jsx,ts,tsx}' --write",
+    "reinstall": "rm -rf node_modules && npm install",
+    "test": "jest \"\\.spec\\.tsx?$\"",
     "start": "webpack-dev-server --hot --progress --colors"
   },
   "dependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/recharts": "^1.1.21",
+    "@types/styled-components": "^4.1.19",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-spinners": "^0.6.1",
+    "recharts": "^1.7.1",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -15,27 +24,39 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.5",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^24.8.0",
-    "jest-transform-stub": "^2.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
     "mini-css-extract-plugin": "^0.8.0",
-    "ts-jest": "^24.0.2",
+    "prettier": "1.18.2",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.1.0",
     "typescript": "^3.6.2",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
   },
   "jest": {
-    "testRegex": "\\.(test|spec)\\.(j|t)sx?$",
+    "automock": false,
+    "testRegex": "\\.spec\\.tsx?$",
     "transform": {
       "^.+\\.jsx?$": "babel-jest",
       "^.+\\.tsx?$": "ts-jest"
     },
+    "setupFilesAfterEnv": [
+      "./src/test-setup.ts"
+    ],
     "moduleNameMapper": {
-      "^.+.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+      "\\.(css|styl|less|sass|scss)$": "identity-obj-proxy"
     },
     "moduleFileExtensions": [
       "ts",
